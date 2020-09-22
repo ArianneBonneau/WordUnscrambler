@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+
 
 namespace WordUnscrambler
 {
@@ -24,30 +26,24 @@ namespace WordUnscrambler
                     else
                     {
                         //convert strings into char array
-                        char [] scrambledWordArray = scrambledWords.ToCharArray();
-                        char[] wordListArray = wordList.ToCharArray();
+                        char[] scrambledWordArray = scrambledWord.ToCharArray();
+                        char[] wordArray = word.ToCharArray();
 
                         //sort both character arrays (Array.sort())
                         Array.Sort(scrambledWordArray);
-                        Array.Sort(wordListArray);
+                        Array.Sort(wordArray);
                         //act -> sort -> act
                         //cat -> sort -> act
 
                         //compare sorted char arrays or convert to string and compare 
-                        scrambledWordArray.ToString();
-                        wordListArray.ToString();
+                        string scrambledWord2 = new string(scrambledWordArray);
+                        string word2 = new string(wordArray);
 
-                        foreach (var scrambledWord2 in scrambledWordArray)
-                        {
-                            foreach (var word2 in wordList)
-                            {
-                                //if they are equal, add to matchedWords list
-                                if (scrambledWord2.Equals(word2, StringComparison.OrdinalIgnoreCase))
-                                {
-                                    matchedWords.Add(BuildMatchedWord(scrambledWord2, word2));
-                                }
-                            }
-                        }
+                           //if they are equal, add to matchedWords list
+                           if (scrambledWord2 == word2)
+                           {
+                               matchedWords.Add(BuildMatchedWord(scrambledWord2, word2));
+                           }
                     }
                 }
             }

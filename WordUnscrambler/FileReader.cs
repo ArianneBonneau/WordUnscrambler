@@ -18,13 +18,13 @@ namespace WordUnscrambler
                 try
                 {
                 //return file contents, which is a string[]
-                foreach (string line in lines)
-                {
-                    Console.WriteLine(line);
-                }
+                    foreach (string line in lines)
+                    {
+                        Console.WriteLine(line);
+                    }
                 Console.ReadLine();
 
-            }
+                }
                 catch (Exception e)
                 {
                     Console.WriteLine("Exception: " + e.Message);
