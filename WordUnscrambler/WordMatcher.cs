@@ -52,7 +52,7 @@ namespace WordUnscrambler
             {
                 MatchedWord matchedWord = new MatchedWord
                 {
-                    ScrambledWorld = scrambledWord,
+                    ScrambledWord = scrambledWord,
                     Word = word
                 };
 

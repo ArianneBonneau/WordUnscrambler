@@ -8,7 +8,7 @@ namespace WordUnscrambler
 {
     struct MatchedWord
     {
-        public string ScrambledWorld { get; set; }
+        public string ScrambledWord { get; set; }
         public string Word { get; set; }
     }
 }
