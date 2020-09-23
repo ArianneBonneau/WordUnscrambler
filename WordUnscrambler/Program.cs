@@ -20,33 +20,33 @@ namespace WordUnscrambler
             {
                 try
                 {
-                    Console.WriteLine(Constants.FirstQuestion);
+                    Console.WriteLine("Enter scrambled word(s) manually or as a file: F - file / M - manual");
 
-                    String option = Console.ReadLine() ?? throw new Exception(Constants.Null);
+                    String option = Console.ReadLine() ?? throw new Exception("String is empty/null");
 
                     switch (option.ToUpper())
                     {
                         case "F":
-                            Console.WriteLine(Constants.FileName);
+                            Console.WriteLine("Enter file path including the file name: ");
                             ExecuteScrambledWordsInFileScenario();
                             break;
                         case "M":
-                            Console.WriteLine(Constants.ManualWord);
+                            Console.WriteLine("Enter word(s) manually (separated by commas if mutiple)");
                             ExecuteScrambledWordManualEntryScenario();
                             break;
                         default:
                             valid = true;
-                            Console.WriteLine(Constants.OptionNotFound);
+                            Console.WriteLine("The entered option was not recognized");
                             break;
                     }
                 }
                 catch (Exception ex)
                 {
                     //valid = true;
-                    Console.WriteLine(Constants.Terminate);
+                    Console.WriteLine("The program will be terminated.");
                 }
 
-                Console.WriteLine(Constants.Continue);
+                Console.WriteLine("Would you like to continue? Y/N");
                 var answer = Console.ReadLine();
                 switch (answer.ToUpper())
                 {
@@ -57,7 +57,7 @@ namespace WordUnscrambler
                         Environment.Exit(0);
                         break;
                     default:
-                        Console.WriteLine(Constants.Continue);
+                        Console.WriteLine("The entered option was not recognized");
                         valid = true;
                         break;
                 }
@@ -108,7 +108,7 @@ namespace WordUnscrambler
                 {
                     //write to console
                     //MATCH FOUND FOR act: cat
-                    Console.WriteLine("MATCH FOUND FOR {0}: {1}", _wordMatcher , _matchedWord.GetWord());
+                    Console.WriteLine("MATCH FOUND FOR {0}: {1}", _matchedWord.GetScrambledWord() , _matchedWord.GetWord());
                 }
             }
             else
