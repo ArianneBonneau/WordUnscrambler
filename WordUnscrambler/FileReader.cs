@@ -20,9 +20,8 @@ namespace WordUnscrambler
                 //return file contents, which is a string[]
                     foreach (string line in lines)
                     {
-                        Console.WriteLine(line);
+                        Console.Read();
                     }
-                Console.ReadLine();
 
                 }
                 catch (Exception e)

@@ -8,7 +8,28 @@ namespace WordUnscrambler
 {
     struct MatchedWord
     {
-        public string ScrambledWord { get; set; }
-        public string Word { get; set; }
+        public string ScrambledWord;
+        
+        public string GetScrambledWord()
+        {
+            return ScrambledWord;
+        }
+
+        public void SetScrambledWord(string ScrambledWord)
+        {
+            this.ScrambledWord = ScrambledWord;
+        }
+
+        public string Word;
+
+        public string GetWord()
+        {
+            return Word;
+        }
+
+        public void SetWord(string Word)
+        {
+            this.Word = Word;
+        }
     }
 }

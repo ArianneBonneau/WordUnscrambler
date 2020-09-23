@@ -48,18 +48,17 @@ namespace WordUnscrambler
                 }
             }
 
-            MatchedWord BuildMatchedWord(string scrambledWord, string word)
-            {
-                MatchedWord matchedWord = new MatchedWord
-                {
-                    ScrambledWord = scrambledWord,
-                    Word = word
-                };
-
-                return matchedWord;
-            }
-
             return matchedWords;
+        }
+        MatchedWord BuildMatchedWord(string scrambledWord, string word)
+        {
+            MatchedWord matchedWord = new MatchedWord
+            {
+                ScrambledWord = scrambledWord,
+                Word = word
+            };
+
+            return matchedWord;
         }
 
     }

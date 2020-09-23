@@ -35,15 +35,17 @@ namespace WordUnscrambler
                             ExecuteScrambledWordManualEntryScenario();
                             break;
                         default:
+                            valid = true;
                             Console.WriteLine("The entered option was not recognized");
                             break;
                     }
                 }
                 catch (Exception ex)
                 {
-                    valid = true;
-                    Console.WriteLine("The program will be terminated." + ex.Message);
+                    //valid = true;
+                    Console.WriteLine("The program will be terminated.");
                 }
+
                 Console.WriteLine("Would you like to continue? Y/N");
                 var answer = Console.ReadLine();
                 switch (answer.ToUpper())
@@ -61,8 +63,32 @@ namespace WordUnscrambler
                 }
             }
 
-
         }
+
+        private static void ExecuteScrambledWordManualEntryScenario()
+        {
+            //read user's input - a comma separated string containing scrambled words
+            string manualInput = Console.ReadLine();
+
+            //extract words in string [] - use Split()
+            char[] separators = { ',', ' ' };
+            string[] scrambledWords = manualInput.Split(separators);
+
+            DisplayMatchedUnscrambledWords(scrambledWords);
+        }
+
+        private static void ExecuteScrambledWordsInFileScenario()
+        {
+            //read the user's input - file with scrambled words
+            var filename = Console.ReadLine();
+
+            //read words from the file and store in string [] scrambledWords
+            string[] scrambledWords = _fileReader.Read(filename);
+
+            //display the matched words
+            DisplayMatchedUnscrambledWords(scrambledWords);
+        }
+
         private static void DisplayMatchedUnscrambledWords(string[] scrambledWords)
         {
             //read the list of words in the wordlist.txt file (unscrambled words)
@@ -82,7 +108,7 @@ namespace WordUnscrambler
                 {
                     //write to console
                     //MATCH FOUND FOR act: cat
-                    Console.WriteLine("MATCH FOUND FOR {0}: {1}", scrambledWords, wordList);
+                    Console.WriteLine("MATCH FOUND FOR {0}: {1}", _wordMatcher , _matchedWord.GetWord());
                 }
             }
             else
@@ -91,33 +117,9 @@ namespace WordUnscrambler
                 Console.WriteLine("NO MATCHES HAVE BEEN FOUND");
             }
         }
-
-        private static void ExecuteScrambledWordsInFileScenario()
-        {
-            //read the user's input - file with scrambled words
-            var filename = Console.ReadLine();
-
-            //read words from the file and store in string [] scrambledWords
-            string[] scrambledWords = _fileReader.Read(filename);
-
-            //display the matched words
-            DisplayMatchedUnscrambledWords(scrambledWords);
-        }
-
-        private static void ExecuteScrambledWordManualEntryScenario()
-        {
-            //read user's input - a comma separated string containing scrambled words
-            string manualInput = Console.ReadLine();
-
-            //extract words in string [] - use Split()
-            char[] separators = { ',', ' ' };
-            string[] scrambledWords = manualInput.Split();
-
-            DisplayMatchedUnscrambledWords(scrambledWords);
-        }
-
-
     }
 
-} 
+
+
+}
 
