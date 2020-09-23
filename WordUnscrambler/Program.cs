@@ -20,33 +20,33 @@ namespace WordUnscrambler
             {
                 try
                 {
-                    Console.WriteLine("Enter scrambled word(s) manually or as a file: F - file / M - manual");
+                    Console.WriteLine(Constants.FirstQuestion);
 
-                    String option = Console.ReadLine() ?? throw new Exception("String is empty/null");
+                    String option = Console.ReadLine() ?? throw new Exception(Constants.Null);
 
                     switch (option.ToUpper())
                     {
                         case "F":
-                            Console.WriteLine("Enter file path including the file name: ");
+                            Console.WriteLine(Constants.FileName);
                             ExecuteScrambledWordsInFileScenario();
                             break;
                         case "M":
-                            Console.WriteLine("Enter word(s) manually (separated by commas if mutiple)");
+                            Console.WriteLine(Constants.ManualWord);
                             ExecuteScrambledWordManualEntryScenario();
                             break;
                         default:
                             valid = true;
-                            Console.WriteLine("The entered option was not recognized");
+                            Console.WriteLine(Constants.OptionNotFound);
                             break;
                     }
                 }
                 catch (Exception ex)
                 {
                     //valid = true;
-                    Console.WriteLine("The program will be terminated.");
+                    Console.WriteLine(Constants.Terminate);
                 }
 
-                Console.WriteLine("Would you like to continue? Y/N");
+                Console.WriteLine(Constants.Continue);
                 var answer = Console.ReadLine();
                 switch (answer.ToUpper())
                 {
@@ -57,7 +57,7 @@ namespace WordUnscrambler
                         Environment.Exit(0);
                         break;
                     default:
-                        Console.WriteLine("The entered option was not recognized");
+                        Console.WriteLine(Constants.Continue);
                         valid = true;
                         break;
                 }
