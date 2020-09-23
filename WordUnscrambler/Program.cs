@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 using System.IO;
 
 namespace WordUnscrambler
-{
+{       
+        /// <summary>
+        /// Arianne Bonneau
+        /// </summary>
     class Program
     {
         private static readonly FileReader _fileReader = new FileReader();
