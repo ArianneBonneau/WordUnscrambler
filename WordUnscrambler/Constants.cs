@@ -8,7 +8,7 @@ namespace WordUnscrambler
 {
     class Constants
     {
-        //Anthony
+        //Anthony Toner
         public static string FirstQuestion = "Enter scrambled word(s) manually or as a file: F - file / M - manual";
 
         public static string Null = "String is empty/null";
