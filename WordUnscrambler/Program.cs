@@ -23,40 +23,52 @@ namespace WordUnscrambler
             {
                 try
                 {
-                    Console.WriteLine(Constants.FirstQuestion);
-
-                    String option = Console.ReadLine() ?? throw new Exception(Constants.Null);
-
-                    switch (option.ToUpper())
+                    var valid1 = false;
+                    while (!valid1)
                     {
-                        case "F":
-                            Console.WriteLine(Constants.FileName);
-                            ExecuteScrambledWordsInFileScenario();
+
+                        Console.WriteLine(Constants.FirstQuestion);
+
+                        String option = Console.ReadLine() ?? throw new Exception(Constants.Null);
+
+                        switch (option.ToUpper())
+                        {
+                            case "F":
+                                valid1 = true;
+                                Console.WriteLine(Constants.FileName);
+                                ExecuteScrambledWordsInFileScenario();
+                                break;
+                            case "M":
+                                valid1 = true;
+                                Console.WriteLine(Constants.ManualWord);
+                                ExecuteScrambledWordManualEntryScenario();
+                                break;
+                            default:
+                                valid1 = false;
+                                Console.WriteLine(Constants.OptionNotFound);
                             break;
-                        case "M":
-                            Console.WriteLine(Constants.ManualWord);
-                            ExecuteScrambledWordManualEntryScenario();
-                            break;
-                        default:
-                            valid = true;
-                            Console.WriteLine(Constants.OptionNotFound);
-                            break;
+                        }
                     }
 
-                    Console.WriteLine(Constants.Continue);
-                    var answer = Console.ReadLine();
-                    switch (answer.ToUpper())
+                    var valid2 = false;
+                    while (!valid2)
                     {
-                        case "Y":
-                            valid = true;
-                            break;
-                        case "N":
-                            Environment.Exit(0);
-                            break;
-                        default:
-                            Console.WriteLine(Constants.OptionNotFound);
-                            valid = true;
-                            break;
+                        Console.WriteLine(Constants.Continue);
+                        var answer = Console.ReadLine();
+                        switch (answer.ToUpper())
+                        {
+                            case "Y":
+                                valid2 = true;
+                                break;
+                            case "N":
+                                valid2 = true;
+                                Environment.Exit(0);
+                                break;
+                            default:
+                                Console.WriteLine(Constants.OptionNotFound);
+                                valid2 = false;
+                                break;
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -87,10 +99,18 @@ namespace WordUnscrambler
             var filename = Console.ReadLine();
 
             //read words from the file and store in string [] scrambledWords
-            string[] scrambledWords = _fileReader.Read(filename);
-
-            //display the matched words
-            DisplayMatchedUnscrambledWords(scrambledWords);
+            try
+            {
+                string[] scrambledWords = _fileReader.Read(filename);
+                //display the matched words
+                DisplayMatchedUnscrambledWords(scrambledWords);
+            }
+            catch (Exception ex)
+            {
+                //valid = true;
+                Console.WriteLine(Constants.FileError);
+            }
+       
         }
 
         private static void DisplayMatchedUnscrambledWords(string[] scrambledWords)

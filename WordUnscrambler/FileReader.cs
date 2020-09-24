@@ -12,18 +12,19 @@ namespace WordUnscrambler
         public string[] Read(string filename)
         {
             //declare a string[] to hold the contents of the file
-            string[] lines = File.ReadAllLines(filename);
+            string[] lines = new String[0];
 
             //try catch
-                try
+            try
                 {
                 //return file contents, which is a string[]
-                    foreach (string line in lines)
-                    {
-                        Console.Read();
-                    }
+                lines = File.ReadAllLines(filename);
+                //foreach (string line in lines)
+                                                                    //{
+                                                                    //    Console.Read();
+                                                                    //}
 
-                }
+            }
                 catch (Exception e)
                 {
                     Console.WriteLine("Exception: " + e.Message);

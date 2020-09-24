@@ -6,30 +6,32 @@ using System.Threading.Tasks;
 
 namespace WordUnscrambler
 {
-    struct MatchedWord
+    public struct MatchedWord
     {
         public string ScrambledWord;
+        public string Word;
+
         
         public string GetScrambledWord()
         {
             return ScrambledWord;
         }
 
-        public void SetScrambledWord(string ScrambledWord)
+        public void SetScrambledWord(string ScrambledWord_arg)
         {
-            this.ScrambledWord = ScrambledWord;
+            ScrambledWord = ScrambledWord_arg;
         }
-
-        public string Word;
 
         public string GetWord()
         {
             return Word;
         }
 
-        public void SetWord(string Word)
+        public void SetWord(string Word_arg)
         {
-            this.Word = Word;
+            Word = Word_arg;
         }
+        
     }
+
 }
