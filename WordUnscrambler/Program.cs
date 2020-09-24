@@ -99,11 +99,12 @@ namespace WordUnscrambler
             string[] wordList = _fileReader.Read("wordlist.txt");
 
             //call a word matcher method, to get a list of MatchedWord structs
-            List<MatchedWord> matchedWords = _wordMatcher.Match(scrambledWords, wordList);
+            List<MatchedWord> matchedWords = new List<MatchedWord>();
+            matchedWords = _wordMatcher.Match(scrambledWords, wordList);
 
             //display the match - print to  console
 
-            if (matchedWords.Any())
+            if (matchedWords.Any())  
             {
                 //loop through matchWords and print contents of structs
                 //foreach
@@ -112,7 +113,7 @@ namespace WordUnscrambler
                 {
                     //write to console
                     //MATCH FOUND FOR act: cat
-                    Console.WriteLine("MATCH FOUND FOR {0}: {1}", _matchedWord.GetScrambledWord() , _matchedWord.GetWord());
+                    Console.WriteLine("MATCH FOUND FOR {0}: {1}", matchedWord.GetScrambledWord().ToString(), matchedWord.GetWord().ToString());
                 }
             }
             else

@@ -12,7 +12,7 @@ namespace WordUnscrambler
     {
         public List<MatchedWord> Match(string[] scrambledWords, string[] wordList)
         {
-            List<MatchedWord> matchedWords = new List<MatchedWord>();
+            List<MatchedWord> matchedWords1 = new List<MatchedWord>();
 
             foreach (var scrambledWord in scrambledWords)
             {
@@ -21,7 +21,7 @@ namespace WordUnscrambler
                     //scrambled word already matches word
                     if (scrambledWord.Equals(word, StringComparison.OrdinalIgnoreCase))
                     {
-                        matchedWords.Add(BuildMatchedWord(scrambledWord, word));
+                        matchedWords1.Add(BuildMatchedWord(scrambledWord, word));
                     }
                     else
                     {
@@ -42,13 +42,12 @@ namespace WordUnscrambler
                            //if they are equal, add to matchedWords list
                            if (scrambledWord2 == word2)
                            {
-                               matchedWords.Add(BuildMatchedWord(scrambledWord2, word2));
+                               matchedWords1.Add(BuildMatchedWord(scrambledWord, word)); 
                            }
                     }
                 }
             }
-
-            return matchedWords;
+            return matchedWords1;
         }
         MatchedWord BuildMatchedWord(string scrambledWord, string word)
         {
